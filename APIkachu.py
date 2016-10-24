@@ -1,14 +1,11 @@
 import requests
 
-# url =
 
-
-def get_data(endpoint, lookup="!!lookup,name??"):
-    url = "http://pokeapi.co/api/v2/{}/".format(endpoint)
+def get_data(endpoint, lookup="name"):
+    url = "http://pokeapi.co/api/v2/pokemon/{}/".format(endpoint)
     while url:
         result = requests.get(url)
         json_result = result.json()
-
         for pokemon in json_result["results"]:
             print(pokemon[lookup])
 
