@@ -11,7 +11,7 @@ def get_list_data(endpoint, lookup="name"):
         for pokemon in json_result["results"]:
             print(pokemon[lookup])
 
-        if input("Press enter to keep going, submit anything else to quit"):
+        if input("Press enter to keep going, submit anything else to quit  "):
             break
 
         url = json_result["next"]
@@ -30,8 +30,10 @@ def get_pokemon_detail_data(endpoint, lookup="name"):
         json_result = result.json()
         print(json_result['name'])
 
-        if input("Press enter to keep going, "):
-            break
+        while not input("Press enter to search again, or type something to cancel "):
+            url = "http://pokeapi.co/api/v2/pokemon/{}/".format(endpoint)
+        else:
+            return False
 
         url = json_result["next"]
 
@@ -82,8 +84,12 @@ def user_input():
     user_choice = input("Browse the full (LIST)s, or seach for a (POKEMON) an, (ITEM), or a (GENERATION): ").lower()
     if user_choice == "list":
         print("list")
+        value = input("List of: pokemon, generation, item: ").lower()
+        get_list_data(value)
     elif user_choice == "pokemon":
         print("pokemon")
+        value = input("Type the id or name: ")
+        get_pokemon_detail_data(value)
     elif user_choice == "item":
         print("item")
     elif user_choice == "generation":
@@ -91,6 +97,5 @@ def user_input():
     else:
         print(user_choice)
         print("End Program")
-
 
 user_input()
