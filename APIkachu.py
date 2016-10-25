@@ -52,10 +52,11 @@ def get_item_detail_data(endpoint, lookup="name"):
         # if input("Press enter to keep going, "):
         #     break
 
-        if not input("Press enter to search again, or type something to cancel "):
+        while not input("Press enter to search again, or type something to cancel "):
             url = "http://pokeapi.co/api/v2/item/{}/".format(endpoint)
+            break
         else:
-            return True
+            print("End Program")
 
 # while True:
 #     value = input("Search: ")
@@ -74,9 +75,12 @@ def get_version_detail_data(endpoint, lookup="name"):
         # if input("Press enter to keep going, "):
         #     break
 
-        if not input("Press enter to search again, or type something to cancel "):
+        if input("Press enter to search again, or type something to cancel "):
             url = "http://pokeapi.co/api/v2/generation/{}/".format(endpoint)
+            return False
+            break
         else:
+            url = ""
             return True
 
 # while True:
@@ -98,8 +102,11 @@ def user_input():
 
     elif user_choice == "item":
         print("item")
-        value = input("Type the id or name: ")
-        get_item_detail_data(value)
+        if not True:
+            pass
+        else:
+            value = input("Type the id or name: ")
+            get_item_detail_data(value)
 
     elif user_choice == "generation":
         print("generation")
