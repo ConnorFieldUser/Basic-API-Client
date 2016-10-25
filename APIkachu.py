@@ -35,8 +35,6 @@ def get_pokemon_detail_data(endpoint, lookup="name"):
         else:
             return True
 
-        url = json_result["next"]
-
 # while True:
 #     value = input("Search: ")
 #     get_pokemon_detail_data(value)
@@ -58,8 +56,6 @@ def get_item_detail_data(endpoint, lookup="name"):
             url = "http://pokeapi.co/api/v2/item/{}/".format(endpoint)
         else:
             return True
-
-        url = json_result["next"]
 
 # while True:
 #     value = input("Search: ")
@@ -83,15 +79,13 @@ def get_version_detail_data(endpoint, lookup="name"):
         else:
             return True
 
-        url = json_result["next"]
-#
 # while True:
 #     value = input("Search: ")
 #     get_version_detail_data(value)
 
 
 def user_input():
-    user_choice = input("Browse the full (LIST)s, or seach for a (POKEMON) an, (ITEM), or a (GENERATION): ").lower()
+    user_choice = input("Browse the full (LIST)s, or seach for a (POKEMON), an (ITEM), or a (GENERATION): ").lower()
     if user_choice == "list":
         print("list")
         value = input("List of: pokemon, generation, item: ").lower()
@@ -109,6 +103,8 @@ def user_input():
 
     elif user_choice == "generation":
         print("generation")
+        value = input("Type the id or name: ")
+        get_version_detail_data(value)
 
     else:
         print(user_choice)
