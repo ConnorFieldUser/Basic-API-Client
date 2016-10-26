@@ -28,8 +28,8 @@ def get_pokemon_detail_data(endpoint, lookup="name"):
     while url:
         result = requests.get(url)
         json_result = result.json()
-        print(json_result['name'])
-        print(json_result['species'])
+        print("Name: {}".format(json_result['name']))
+        print("Spcecies: {}".format(json_result['species']['name']))
 
         if not input("Press enter to search again, or type something to cancel "):
             url = "http://pokeapi.co/api/v2/pokemon/{}/".format(endpoint)
@@ -49,6 +49,8 @@ def get_item_detail_data(endpoint, lookup="name"):
         result = requests.get(url)
         json_result = result.json()
         print(json_result['name'])
+        print("Cost: {}".format(json_result['cost']))
+        print(json_result['attributes'])
 
         # if input("Press enter to keep going, "):
         #     break
@@ -71,6 +73,8 @@ def get_version_detail_data(endpoint, lookup="name"):
     while url:
         result = requests.get(url)
         json_result = result.json()
+        print(json_result['name'])
+        print(json_result['names'])
         print(json_result['name'])
 
         # if input("Press enter to keep going, "):
@@ -97,12 +101,10 @@ def user_input():
         get_list_data(value)
 
     elif user_choice == "pokemon":
-        print("pokemon")
         value = input("Type the id or name: ")
         get_pokemon_detail_data(value)
 
     elif user_choice == "item":
-        print("item")
         if not True:
             pass
         else:
