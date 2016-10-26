@@ -78,6 +78,12 @@ def get_version_detail_data(endpoint, lookup="name"):
         print(json_result['name'])
         print(json_result['names'])
         print(json_result['name'])
+        names = json_result.get("name", "")
+        for name in names:
+            name_result = requests.get(name).json()
+            split_crawl = name_result["opening_crawl"].split("\r\n")
+        for line in split_crawl:
+            print(line)
 
         # if input("Press enter to keep going, "):
         #     break
