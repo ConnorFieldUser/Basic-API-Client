@@ -30,6 +30,8 @@ def get_pokemon_detail_data(endpoint, lookup="name"):
         json_result = result.json()
         print("Name: {}".format(json_result['name']))
         print("Spcecies: {}".format(json_result['species']['name']))
+        print("Height: {}".format(json_result['height']))
+        print("Weight: {}".format(json_result['weight']))
 
         if not input("Press enter to search again, or type something to cancel "):
             url = "http://pokeapi.co/api/v2/pokemon/{}/".format(endpoint)
